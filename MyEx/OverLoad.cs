@@ -21,7 +21,9 @@ namespace MyEx
             经理 = 1
         }
 
-        IList<Employee> employeesList = new List<Employee>()
+        
+
+        private IList<Employee> employeesList = new List<Employee>()
         {
             new Employee{ Number=1,Name="张三",Position=0 },
             new Employee{ Number=2,Name="李四",Position=0 },
@@ -29,11 +31,15 @@ namespace MyEx
             new Employee{ Number=4,Name="赵六",Position=0 }
         };
 
-        IList<Manager> managersList = new List<Manager>()
+        private IList<Manager> managersList = new List<Manager>()
         {
             new Manager{ Number=1,Name="王可",Position=1, Department ="研发部" },
             new Manager{ Number=2,Name="李四",Position=1, Department ="销售部" }
         };
+
+        //定义字典
+        private static Dictionary<string, string> DicParamsConvert = new Dictionary<string, string>();
+        
 
         public class Employee
         {
@@ -132,13 +138,12 @@ namespace MyEx
             dicGetList = ObjectTool.GetProperties(listGet[0]);
             if (dicGetList != null)
             {
+                Console.WriteLine("您输入的员工编号为：" + S1 +",该员工的资料为：");
                 foreach (var item in dicGetList)
                 {
-
-                    Console.WriteLine("该员工的资料为：");
-                    Console.WriteLine(item.Key, item.Value);
-                    Console.ReadKey();
+                    Console.WriteLine(item.Key + "  " + item.Value);   
                 }
+                Console.ReadKey();
             }   
             else {
                 Console.WriteLine("没有找到符合条件的员工资料！");

@@ -18,7 +18,7 @@ namespace MyEx.Tools
             Type types = obj.GetType();   //获取所有对象属性和值的集合
             foreach (PropertyInfo item in types.GetProperties())
             {
-                Dic.Add(item.Name.ToString(), item.GetType().GetProperty(item.Name).GetValue(item,null).ToString());
+                Dic.Add(item.Name.ToString(), item.GetValue(obj, null).ToString());
             }
             return Dic;
         }
