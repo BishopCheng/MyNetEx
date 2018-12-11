@@ -15,8 +15,13 @@ namespace MyEx
             #endregion
 
             #region 枚举练习
-            EnumEx enumEx = new EnumEx();
-            enumEx.GetCharDays();
+            //EnumEx enumEx = new EnumEx();
+            //enumEx.GetCharDays();
+            #endregion
+
+            #region 重载练习
+            OverLoad ov = new OverLoad();
+            ov.PrintMember();
             #endregion
         }
     }
