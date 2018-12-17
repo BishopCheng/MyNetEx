@@ -15,13 +15,19 @@ namespace MyEx
 
     public class OverLoad
     {
-        public enum positon
+        private int flag = 0;
+        public enum Positon
         {
-            职员 = 0,
-            经理 = 1
+             职员=0,
+             经理=1
         }
 
-        
+        public enum Department {
+            销售部 =0,
+            研发部=1,
+            人事部=2
+        }
+
 
         private IList<Employee> employeesList = new List<Employee>()
         {
@@ -38,7 +44,10 @@ namespace MyEx
         };
 
         //定义字典
-        private static Dictionary<string, string> DicParamsConvert = new Dictionary<string, string>();
+        Dictionary<string, string> Dic = new Dictionary<string, string>() {
+            { "Number","工号" },{ "Name","姓名" },{ "Position","职位" },{ "Department","部门" }
+        };
+        
         
 
         public class Employee
@@ -117,7 +126,8 @@ namespace MyEx
          {
             Dictionary<string, string> dicGetList = new Dictionary<string, string>();
             List<Object> listGet = new List<object>();
-            Console.WriteLine("程序开始！");
+            Ag: if (flag == 0) { Console.WriteLine("程序开始"); }
+            else { Console.WriteLine("程序继续"); }
             Console.WriteLine("请输入参数：输入一个编号，查询员工；输入编号和部门，查询经理");
             string S1 = Console.ReadLine();
             Console.WriteLine("您是否还要继续输入参数？是按Y，否按N");
@@ -130,6 +140,7 @@ namespace MyEx
             }
             else
             {
+                Console.WriteLine("请输入部门参数,编号范围为0-2");
                 S3 = Console.ReadLine();
                 listGet = GetEmployee(S1, S3);
             }
@@ -141,14 +152,39 @@ namespace MyEx
                 Console.WriteLine("您输入的员工编号为：" + S1 +",该员工的资料为：");
                 foreach (var item in dicGetList)
                 {
-                    Console.WriteLine(item.Key + "  " + item.Value);   
+                    var containItemKey = Dic.Where(c => c.Key.ToString() == item.Key).FirstOrDefault().Value;
+                    string containItemValue = "";
+                    if (item.Key.Contains("Postion"))
+                    {
+                        containItemValue = (string)Enum.Parse(typeof(Positon), item.Value.ToString());
+                    }
+                    else { containItemValue = item.Value; }
+                    Console.WriteLine(containItemKey + "  " + containItemValue);   
                 }
                 Console.ReadKey();
             }   
             else {
                 Console.WriteLine("没有找到符合条件的员工资料！");
+                
             }
-            
+            flag += 1;
+            Console.WriteLine("是否需要重新查询？？是按Y，否按N");
+            string key = Console.ReadLine();
+            if (key.Contains("Y") || key.Contains("y"))
+            {
+                //跳转执行
+                goto Ag;
+            }
+            else if (key.Contains("N") || key.Contains("n"))
+            {
+                Console.WriteLine("谢谢使用,程序结束！");
+                
+            }
+            else {
+                Console.WriteLine("输入错误！");
+
+            }
+            Console.ReadKey();
         }
           
         private List<Object> GetEmployee(string params1)
