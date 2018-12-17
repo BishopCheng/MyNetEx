@@ -28,6 +28,11 @@ namespace MyEx
             //Constructed.Vehicle vehicle = new Constructed.Vehicle("阳光牌");
             //Constructed.Vehicle vehicle2 = new Constructed.Vehicle("保时捷牌", 4);
             #endregion
+
+            #region 匿名内部类练习
+            Anonymous anonymous = new Anonymous();
+            anonymous.Say();
+            #endregion
         }
     }
 }
