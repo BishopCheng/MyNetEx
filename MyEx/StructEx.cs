@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace MyEx
 {
@@ -27,9 +28,32 @@ namespace MyEx
         /// 写入学号
         /// </summary>
         /// <returns></returns>
-        public int InsertLstNum()
+        public void InsertLstNum(out string result)
         {
-
+            for (int i = 1; i <=100; i++)
+            {
+                lstNum.Add(i+"");
+            }            
+            result= lstNum.Count == 100 ? "学号添加成功" : "学号添加失败"; 
         }
+
+        /// <summary>
+        /// 初始化姓名数据
+        /// </summary>
+        public void InitNameData()
+        {
+            
+        }
+
+        /// <summary>
+        /// 获取名字列表
+        /// </summary>
+        /// <param name="filepath">文件路径</param>
+        /// <returns></returns>
+        public List<string> GetGivenNameLst(string filepath) {
+            
+        }
+
+
     }
 }
