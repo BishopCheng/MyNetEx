@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MyEx
 {
@@ -51,7 +52,35 @@ namespace MyEx
         /// <param name="filepath">文件路径</param>
         /// <returns></returns>
         public List<string> GetGivenNameLst(string filepath) {
+            List<string> NameLst = new List<string>();
+            using (StreamReader sr = new StreamReader(filepath,Encoding.UTF8))
+            {
+                string line = "";
+                while(sr.ReadLine() != null)
+                {
+                    line = sr.ReadLine();
+
+                    //将line中的文字存入list
+                    line = line.Replace(" ", "");
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        NameLst.Add(line.Substring(i, i + 1));
+                    }
+                }
+            }
+            return NameLst;
+        }
+
+        /// <summary>
+        /// 将名字集合写入Json文件
+        /// </summary>
+        /// <param name="path"></param>
+        public void ConvertToJsonFile(string path,List<string>NameLst)
+        {
+            var jsonStr= JsonConvert.SerializeObject(NameLst);
             
+            //先创建文件,再判断是否已有相同文件
+            FileStream fs = new FileStream("") 
         }
 
 
