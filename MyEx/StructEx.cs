@@ -20,10 +20,12 @@ namespace MyEx
           
         }
 
-        //按字典规则随机生成50个学生,并按照学号从高到低排队
+        //按字典规则随机生成100个学生,并按照学号从高到低排队
 
-        Dictionary<string, string> DicName = new Dictionary<string, string>();
+        Dictionary<int, string> DicName = new Dictionary<int, string>();
+        Dictionary<int, string> FirstName = new Dictionary<int, string>();
         List<string> lstNum = new List<string>();
+        List<Student> StuLst = new List<Student>();
         
         /// <summary>
         /// 写入学号
@@ -35,15 +37,27 @@ namespace MyEx
             {
                 lstNum.Add(i+"");
             }            
-            result= lstNum.Count == 100 ? "学号添加成功" : "学号添加失败"; 
+            result= lstNum.Count == 100 ? "学号添加成功" : "学号添加失败";
+            Console.WriteLine(result);
         }
 
         /// <summary>
-        /// 初始化姓名数据
+        /// 初始化学生数据
         /// </summary>
         public void InitNameData()
         {
+            Random rd = new Random();
+
+            //从学号中随机选择一个，从姓中随机选择一个字，从名字中随机选择一或两个字 写入对象集合
+            #region 学号生成
+            int num = 0;
+            num = rd.Next(1, 100);
+            lstNum.Remove(num.ToString());
+            #endregion
+
+            #region 姓生成
             
+            #endregion
         }
 
         /// <summary>
@@ -77,10 +91,44 @@ namespace MyEx
         /// <param name="path"></param>
         public void ConvertToJsonFile(string path,List<string>NameLst)
         {
+            int Count = NameLst.Count;
             var jsonStr= JsonConvert.SerializeObject(NameLst);
-            
-            //先创建文件,再判断是否已有相同文件
-            FileStream fs = new FileStream("") 
+            string FilePath = path + "allName.json";
+            try
+            {
+                //先判断文件是否存在，再创建文件
+                if (!File.Exists(FilePath))
+                {
+                    FileStream fs = new FileStream(FilePath, FileMode.Create);
+                    if (File.Exists(path + "allName.json"))
+                    {
+                        Console.WriteLine("姓名文件创建成功！");
+                        fs.Close();
+                        fs.Dispose();
+                        //将jsonStr写入文件
+                        using (StreamWriter sw = new StreamWriter(FilePath, true))
+                        {
+                            sw.WriteLine(jsonStr);
+                            Console.WriteLine("共写入字个数 " + Count + " 个");
+                            sw.Close();
+                            sw.Dispose();
+                        }
+                       
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("姓名文件创建失败,程序中止！");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
+           
         }
 
 

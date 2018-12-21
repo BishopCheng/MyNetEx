@@ -11,6 +11,13 @@ namespace MyEx.Tools
     /// </summary>
     public static class ObjectTool
     {
+
+        public static IEnumerable<CharEntity> GetJsonObjectListFromJsonFile(string filePath)
+        {
+            IList<CharEntity> CharList = new List<CharEntity>();
+            
+        }
+
         public static Dictionary<string,string> GetProperties(object obj)
         {
             Dictionary<string, string> Dic = new Dictionary<string, string>();
@@ -22,5 +29,19 @@ namespace MyEx.Tools
             }
             return Dic;
         }
+
+        public static Dictionary<int,Object> GetCharDictionary(object obj)
+        {
+            Dictionary<int, Object> Dic = new Dictionary<int, Object>();
+            if (obj == null) { return Dic; }
+            Type types = obj.GetType();
+            foreach (PropertyInfo item in types.GetProperties())
+            {
+                Dic.Add(Convert.ToInt32(item.Name), item.GetValue(obj, null).ToString());
+            }
+            return Dic;
+        }
+
+
     }
 }
