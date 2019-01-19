@@ -28,6 +28,14 @@ namespace MyEx
             //Constructed.Vehicle vehicle = new Constructed.Vehicle("阳光牌");
             //Constructed.Vehicle vehicle2 = new Constructed.Vehicle("保时捷牌", 4);
             #endregion
+
+            #region 扩展方法练习
+            //Console.WriteLine("开始扩展方法的练习！");
+            //string s = "ABCDE";
+            //int c= s.GetCount();
+            //Console.WriteLine(c);
+            //Console.ReadKey();
+            #endregion
         }
     }
 }
