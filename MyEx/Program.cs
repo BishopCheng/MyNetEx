@@ -36,6 +36,24 @@ namespace MyEx
             //Console.WriteLine(c);
             //Console.ReadKey();
             #endregion
+
+            #region 虚函数练习
+            //virtualEx virtualEx = new virtualEx();
+            //virtualEx.Cal CA = new virtualEx.CalPerimete();
+            //CA.Calculate(1, 2, 7);
+            //Console.ReadKey();
+            #endregion
+
+            #region 抽象类练习   
+            //AbstractEx ABEx = new AbstractEx();
+            //ABEx.GetInfomation();
+
+            #endregion
+
+            #region 接口继承练习
+            InterfaceEx Ie = new InterfaceEx();
+            Ie.GetMixed();
+            #endregion
         }
     }
 }

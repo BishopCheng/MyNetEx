@@ -12,11 +12,11 @@ namespace MyEx.Tools
     public static class ObjectTool
     {
 
-        public static IEnumerable<CharEntity> GetJsonObjectListFromJsonFile(string filePath)
-        {
-            IList<CharEntity> CharList = new List<CharEntity>();
+        //public static IEnumerable<CharEntity> GetJsonObjectListFromJsonFile(string filePath)
+        //{
+        //    IList<CharEntity> CharList = new List<CharEntity>();
             
-        }
+        //}
 
         public static Dictionary<string,string> GetProperties(object obj)
         {
