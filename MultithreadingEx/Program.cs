@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;  //启用线程
-
+using static System.Console;
 
 namespace MultithreadingEx
 {
@@ -21,11 +21,22 @@ namespace MultithreadingEx
             #endregion
 
             #region  线程等待练习
-            Thread thread = new Thread(Thread2.PrintMultiplicationTable);
-            thread.Start();
-            thread.Join(); //让Thread2.PrintCurrentSystemTime 等待thread中的任务完成
-            Thread2.PrintCurrentSystemTime();
-            Console.ReadKey();
+            //Thread thread = new Thread(Thread2.PrintMultiplicationTable);
+            //thread.Start();
+            //thread.Join(); //让Thread2.PrintCurrentSystemTime 等待thread中的任务完成
+            //Thread2.PrintCurrentSystemTime();
+            //Console.ReadKey();
+            #endregion
+
+            #region 线程中止练习(不支持)
+            //WriteLine("Starting...");
+            //Thread t = new Thread(Thread3.PrintMultiplicationTable);
+            //t.Start();
+            //Thread.Sleep(TimeSpan.FromSeconds(5));
+            //t.Abort();//中断线程
+            //WriteLine("A Thread has been Abort!");
+            //t = new Thread(Thread3.PrintCurrentSystemTime);
+            //t.Start();
             #endregion
         }
     }
